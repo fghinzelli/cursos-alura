@@ -13,6 +13,12 @@ main h1 {
 	background-color: rgb(133, 25, 68);
 	color: rgb(255, 255, 255);
 	text-align: center;
+	padding: 25px;
+}
+
+main div {
+	width: 720px;
+	margin: 0 auto;
 }
 
 p {
@@ -25,11 +31,13 @@ h1, h2 {
 
 blockquote {
 	background-color: #D9E5E3;
+	padding: 20px;
 }
 
 aside {
 	background-color: #3C1D3D;
 	color: #F2FFFC;
+	padding: 20px;
 }
 
 aside a {
@@ -40,6 +48,7 @@ aside a {
 footer {
 	background-color: #000000;
 	color: #F2FFFC;
+	padding: 20px;
 }
 
 nav a {
