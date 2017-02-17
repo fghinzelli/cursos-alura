@@ -6,11 +6,16 @@ body {
 }
 
 
+h1, h2 {
+	font-family: "Sansita", sans-serif;
+}
+
 main a {
 	color: #851944;
 }
 
 main h1 {
+	font-size: 60px; 
 	background-color: rgb(133, 25, 68);
 	color: rgb(255, 255, 255);
 	text-align: center;
@@ -20,15 +25,13 @@ main h1 {
 
 main div {
 	width: 720px;
+	padding: 30px 0;
 	margin: 0 auto;
 }
 
 p {
-	text-align: justify;	
-}
-
-h1, h2 {
-	font-family: "Sansita", sans-serif;
+	text-align: justify;
+	margin: 20px 0;	
 }
 
 blockquote {
@@ -37,12 +40,18 @@ blockquote {
 	border: 10px #C2CCCA solid;
 	width: 250px;
 	box-sizing: border-box;
+	margin: 20px 40px;
 }
 
 aside {
 	background-color: #3C1D3D;
 	color: #F2FFFC;
 	padding: 20px;
+}
+
+aside h1 {
+	font-size: 30px;
+	margin-bottom: 25px;
 }
 
 aside a {
@@ -58,4 +67,26 @@ footer {
 
 nav a {
 	color: #F2FFFC;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+.social-icons li {
+	display: inline-block;
+}
+
+article {
+	padding-bottom: 30px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
 }
