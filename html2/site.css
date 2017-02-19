@@ -21,6 +21,7 @@ main a {
 	text-align: center;
 	padding: 25px;
 	border-bottom: 10px black solid;
+	text-transform: uppercase;
 }
 
 .conteudo {
@@ -57,6 +58,7 @@ p {
 .navegacao-site a {
 	color: #F2FFFC;
 	font-family: "Sansita", sans-serif;
+	text-transform: uppercase;
 }
 
 nav a {
@@ -79,6 +81,25 @@ h2 {
 	display: inline-block;
 }
 
+.social-icons a {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	text-indent: -99999;
+}
+
+.github {
+	background-image: url(github.png);
+}
+
+.twitter {
+	background-image: url(twitter.png);
+}
+
+.linkedin {
+	background-image: url(linkedin.png);
+}
+
 article {
 	padding-bottom: 30px;
 	border-bottom: 1px solid #ccc;
@@ -89,4 +110,12 @@ article {
 	background-color: #000000;
 	color: #F2FFFC;
 	padding: 20px;
+}
+.leia-mais {
+    padding: 8px;
+    margin: 16px;
+    display: block;
+    font-size: 24px;
+    text-align: center;
+    background-color: #E6E7E8;
 }
