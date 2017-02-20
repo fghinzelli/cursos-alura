@@ -10,6 +10,12 @@ h1, h2 {
 	font-family: "Sansita", sans-serif;
 }
 
+main {
+	width: 80%;
+	float: left;
+	padding-bottom: 80px;
+}
+
 main a {
 	color: #851944;
 }
@@ -48,17 +54,20 @@ p {
 	background-color: #3C1D3D;
 	color: #F2FFFC;
 	padding: 20px;
+	text-align: center;
 }
 
 .navegacao-site h1 {
 	font-size: 30px;
 	margin-bottom: 25px;
+	text-transform: uppercase;
 }
 
 .navegacao-site a {
 	color: #F2FFFC;
 	font-family: "Sansita", sans-serif;
-	text-transform: uppercase;
+	text-transform: lowercase;
+	text-decoration: none;
 }
 
 nav a {
@@ -75,6 +84,7 @@ em {
 
 h2 {
 	font-size: 30px;
+	clear: both;
 }
 
 .social-icons li {
@@ -110,6 +120,10 @@ article {
 	background-color: #000000;
 	color: #F2FFFC;
 	padding: 20px;
+	clear: both;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 .leia-mais {
     padding: 8px;
@@ -118,4 +132,37 @@ article {
     font-size: 24px;
     text-align: center;
     background-color: #E6E7E8;
+}
+
+.fiat {
+	float: right;
+}
+
+.petrobras  {
+	float: left;
+}
+
+.minha-foto, .navegacao-site {
+	float: right;
+	box-sizing: border-box;
+	border-left: 10px solid black;
+	border-bottom: 10px solid black;
+}
+
+.minha-foto {
+	position: absolute;
+	width: 300px;
+	top: 0;
+	right: 0;
+}
+
+.navegacao-site {
+	position: relative;
+	top: 300px;
+	width: 20%;
+}
+
+cite {
+	float: right;
+	font-style: italic;
 }
