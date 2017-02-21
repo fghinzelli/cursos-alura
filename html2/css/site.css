@@ -172,4 +172,11 @@ cite {
 	background-color: #FAFFFC;
 	margin: 16px;
 	padding: 16px;
+	display: inline-block;
+	width: 45%;
+	box-sizing: border-box;
+}
+
+.item-portfolio img {
+	width: 100%;
 }
