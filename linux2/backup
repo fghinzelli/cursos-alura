@@ -1,0 +1,5 @@
+echo "Compactando arquivos da pasta workspace"
+zip -qr backup.zip /homer/fghinzelli/Documentos/projetos/cursos-alura/linux2/workspace 
+tar -czf backup.tar.gz /homer/fghinzelli/Documentos/projetos/cursos-alura/linux2/workspace
+tar -cjf backup.tar.bz2 /homer/fghinzelli/Documentos/projetos/cursos-alura/linux2/workspace
+echo "Backup realizado com sucesso"
