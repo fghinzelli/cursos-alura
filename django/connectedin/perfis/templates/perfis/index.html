@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-		<title>ConnectedIn</title>
-	</head>
-	<body>
-		<h1>Bem-vindo ao Connectedin</h1>
-	</body>
-</html>
+
+{% extends 'perfis/base.html' %}
+{% block body %}
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>Todos os perfis</strong>
+			</div>
+			{% if perfis %}
+			<ul>
+				{% for perfil in perfis %}
+					<li>
+						<a href="{% url 'exibir' perfil.id %}">{{ perfil.nome }}</a> {{ perfil.email }}</li>
+				{% endfor %}
+			</ul>
+			{% else %}
+				<p>Nenhum perfil encontrado</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
