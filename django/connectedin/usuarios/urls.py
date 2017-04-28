@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from views import RegistrarUsuarioView
 
-urlpatterns = pattern('', 
-	url(r'^registrar/$', RegistrarUsuarioView.as_view(), name='registrar')
-) 
+urlpatterns = [
+    url(r'^registrar/$',  RegistrarUsuarioView.as_view(), name='registrar'),
+]
