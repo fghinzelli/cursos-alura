@@ -3,7 +3,7 @@ numero_secreto = 42
 rodada = 1
 
 while rodada <= total_tentativas:
-	print("Tentativa ", rodada, " de ", total_tentativas )
+	print("Tentativa {} de {}".format(rodada, total_tentativas))
 	chute = input("Digite um número")
 	chute = int(chute)
 
