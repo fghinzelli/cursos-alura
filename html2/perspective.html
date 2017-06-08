@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Testes com a propriedade perspective</title>
+	<style>
+		.bolas1 {
+			perspective: 4px; 
+		}
+
+		.bolas2 {
+			perspective: 2px;
+		}
+
+		.bola {
+			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+
+		.bola1 {
+			transform: translateZ(2px);
+		}
+
+		.bola2 {
+			transform: translateZ(-1px);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="bolas1">
+		<div class="bola bola1"></div>
+		<div class="bola bola2"></div>
+		<div class="bola bola3"></div>
+	</div>
+	<div class="bolas2">
+		<div class="bola bola1"></div>
+		<div class="bola bola2"></div>
+		<div class="bola bola3"></div>
+	</div>
+</body>
+</html>
