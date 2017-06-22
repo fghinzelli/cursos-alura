@@ -105,10 +105,14 @@ main {
 .eficiencia {
     top: 20%;
     left: 75%;
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
 }
 .boas-praticas {
     top: 70%;
     left: 20%;
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
 }
 .codigo-limpo {
     top: 45%;
