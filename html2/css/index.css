@@ -15,6 +15,11 @@
     text-align: right;
     display: block;
 }
+.saudacao-ultima-linha em {
+    display: inline-block;
+    -webkit-transform: skew(-10deg) rotate(-10deg);
+    transform: skew(-10deg) rotate(-10deg); 
+}
 .saudacao strong {
     font-size: 2em;
     color: #000;
@@ -188,4 +193,24 @@ main {
 }
 .blog .mais-recente a {
     color: #F26;
+}
+
+.link-twitter {
+    background-color: #3c1d3d;
+    text-decoration: none;
+    color: #fff;
+    line-height: 1;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14em;
+    padding: 1em 0;
+    border: .25em solid #000;
+    font-size: 1.2em;
+    font-family: "Open Sans Condensed", sans-serif;
+    transform-origin: 0 0;
+    transform: translate(6.5754em, -2.4749em) rotate(45deg);
+    overflow: hidden;
 }
