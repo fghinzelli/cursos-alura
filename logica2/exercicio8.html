@@ -4,7 +4,7 @@
 	var tela = document.querySelector('#tela');
 	var pincel = tela.getContext('2d');
 	var cores = ['blue', 'red', 'green'];
-	var corAtual = 'blue';
+	var indiceCorAtual = 0;
 
 	pincel.fillStyle = 'gray';
 	pincel.fillRect(0, 0, 600, 400);
@@ -18,7 +18,7 @@
 		var x = evento.pageX - tela.offsetLeft;
 		var y = evento.pageY - tela.offsetTop;
 
-		pincel.fillStyle = corAtual;
+		pincel.fillStyle = cores[indiceCorAtual];
 		pincel.beginPath();
 		pincel.arc(x, y, 10, 0, 2*3.14);
 		pincel.fill();
@@ -26,11 +26,10 @@
 	}
 
 	function selecionaCor() {
-		var indice_nova_cor = cores.indexOf(corAtual) + 1;
-		if (indice_nova_cor == cores.length) {
-		  corAtual = cores[0];
-		} else {
-			corAtual = cores[indice_nova_cor];
+		
+		indiceCorAtual++;
+		if (indiceCorAtual >= cores.length) {
+			indiceCorAtual = 0;
 		}
 	}
 </script>
