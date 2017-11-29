@@ -29,11 +29,11 @@ for (var i=0; i<pacientes.length; i++) {
 	}
 	
 	if (pesoEhValido && alturaEhValida) {
-		tdImc.textContent = imc(peso, altura);	
+		tdImc.textContent = calculaImc(peso, altura);	
 	}
 }
 
-function imc(peso, altura) {
+function calculaImc(peso, altura) {
 	var imc = peso / (altura * altura);
 	return imc.toFixed(2);
 }
