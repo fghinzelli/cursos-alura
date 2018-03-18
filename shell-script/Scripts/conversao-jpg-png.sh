@@ -1,9 +1,7 @@
 #!/bin/bash
-cd ~/projetos/cursos-alura/shell-script/imagens-livro
-
-
 
 converte_imagem(){
+cd ~/projetos/cursos-alura/shell-script/imagens-livros
 if [ ! -d png ]
 then
 	mkdir png
