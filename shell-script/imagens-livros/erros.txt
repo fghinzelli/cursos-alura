@@ -1,0 +1,4 @@
+ls: não é possível acessar '*.png.jpg': Arquivo ou diretório não encontrado
+convert: unable to open image `.jpg': Arquivo ou diretório não encontrado @ error/blob.c/OpenBlob/2712.
+convert: no decode delegate for this image format `' @ error/constitute.c/ReadImage/501.
+convert: no images defined `png/.jpg' @ error/convert.c/ConvertImageCommand/3210.
