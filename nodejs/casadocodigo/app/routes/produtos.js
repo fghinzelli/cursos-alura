@@ -5,7 +5,7 @@ module.exports = function(app){
         var connection = mysql.createConnection({
             host: 'db',
             user: 'root',
-            password: 'sys@admin',
+            password: 'sys@dmin',
             database: 'casadocodigo_nodejs'
         })
         
