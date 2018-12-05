@@ -22,19 +22,25 @@ class NegociacaoView {
                 
                 <tbody>
                 ${
-                    modelo.listaNegociacoes.map(negociacao => 
-                        `
+                    modelo.listaNegociacoes.map(negociacao => {
+                        return `
                         <tr>
                             <td>${DateHelper.dataParaTexto(negociacao.data)}</td>
                             <td>${negociacao.quantidade}</td>
                             <td>${negociacao.valor}</td>
-                        </tr>`)
-                }
+                            <td>${negociacao.volume}</td>
+                        </tr>
+                    `
+                    }).join('')}
                 </tbody>
                 
                 <tfoot>
+                    <td colspan="3"></td>
+                    <td>
+                    ${modelo.listaNegociacoes.reduce((total, n) => 
+                        total + n.volume, 0)}
+                    </td>
                 </tfoot>
-            </table>
-        `
+            </table>`
     }
 }
