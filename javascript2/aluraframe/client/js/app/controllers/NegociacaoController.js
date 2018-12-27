@@ -23,6 +23,25 @@ class NegociacaoController {
         this._clear();
     }
 
+    importaNegociacoes() {
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'negociacoes/semana');
+
+        xhr.onreadystatechange = function() {
+            if(xhr.state == 4) {
+                if (xhr.status == 200) {
+                    console.log('Obtendo as negociações do servidor');
+                } else {
+                    console.log('Não foi possível obter as negociações do servidor');
+                }
+            }
+        }
+
+        xhr.send();
+    }
+
     apaga() {
         this._listaNegociacoes.esvazia();
         this._mensagem.texto = 'Negociações apagadas com sucesso';
