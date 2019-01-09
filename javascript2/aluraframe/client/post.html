@@ -27,35 +27,31 @@
 
         <button class="btn btn-primary" type="submit" onclick="sendPost(event)">Enviar dados para servidor</button>
     </form>
-
+    <script src="js/app/services/HttpService.js"></script>
     <script>
 
         function sendPost(event) {
             event.preventDefault();
-            let data = document.querySelector('#data').value;
-            let quantidade = document.querySelector('#quantidade').value;
-            let valor = document.querySelector('#valor').value;
-            jsonEnvio = {
-                "data": data,
-                "quantidade": quantidade,
-                "valor": valor
+            let $ = document.querySelector.bind(document);
+            let inputData = $('#data');
+            let inputQuantidade = $('#quantidade');
+            let inputValor = $('#valor');
+            let negociacao = {
+                data: inputData.value,
+                quantidade: inputQuantidade.value,
+                valor: inputValor.value
             };
-            console.log(jsonEnvio);
-            let xhr = new XMLHttpRequest()
-            xhr.open('POST', '/negociacoes');
-            xhr.setRequestHeader('Content-type', 'application/json')
-
-            xhr.onreadystatechange = () => {
-                if(xhr.readyState == 4) {
-                    if(xhr.status == 200) {
-                        console.log('Dados enviados');
-                    } else {
-                        console.log('Erro');
-                    }
-                }
-            }
-            xhr.send(JSON.stringify(jsonEnvio));
-
+            
+            new HttpService()
+                .post('/negociacoes', negociacao)
+                .then(() => {
+                    inputData.value = '';
+                    inputValor = 1;
+                    inputQuantidade = 0.0;
+                    inputData.focus();
+                    alert('Negociação incluída com sucesso');
+                })
+                .catch(erro => alert(`Não foi possível incluir a negociação: ${erro}`))
         }
     </script>
 </body>

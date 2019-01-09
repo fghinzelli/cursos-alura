@@ -4,11 +4,12 @@ class NegociacaoController {
         this._inputData = $('#data');
         this._inputQuantidade = $('#quantidade');
         this._inputValor = $('#valor');
-        
+        this._ordemAtual = '';
+
         this._listaNegociacoes = new Bind(
             new ListaNegociacoes(),
             new NegociacaoView($('#negociacaoView')),
-            'adiciona', 'esvazia');
+            'adiciona', 'esvazia', 'ordena', 'inverteOrdem');
         
         this._mensagem = new Bind(
             new Mensagem(),
@@ -37,29 +38,7 @@ class NegociacaoController {
                 .forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
         })
         .catch(erro => this._mensagem.texto = erro)
-        /*
-        service.obterNegociacoesDaSemana()
-            .then((negociacoes) => {
-                negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
-                this._mensagem.texto = 'Negociações da semana obtidas com sucesso';
-            })
-            .catch(erro => this._mensagem.texto = erro);
         
-        service.obterNegociacoesDaSemanaAnterior()
-            .then((negociacoes) => {
-                negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
-                this._mensagem.texto = 'Negociações da semana anterior obtidas com sucesso';
-            })
-            .catch(erro => this._mensagem.texto = erro);
-        
-        service.obterNegociacoesDaSemanaRetrasada()
-            .then((negociacoes) => {
-                negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
-                this._mensagem.texto = 'Negociações da semana retrasada obtidas com sucesso';
-            })
-            .catch(erro => this._mensagem.texto = erro);    
-        */
-
         
     }
 
@@ -68,6 +47,14 @@ class NegociacaoController {
         this._mensagem.texto = 'Negociações apagadas com sucesso';
     }
 
+    ordena(coluna) {
+        if (this._ordemAtual == coluna) {
+            this._listaNegociacoes.inverteOrdem();
+        } else {
+            this._listaNegociacoes.ordena((a, b) => a[coluna] - b[coluna]);
+        }
+        this._ordemAtual = coluna
+    }
 
     _adicionaNegociacao() {
         return new Negociacao(
