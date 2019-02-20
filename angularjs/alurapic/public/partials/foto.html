@@ -1,16 +1,19 @@
 <div class="page-header text-center">
     <h1>{{foto.titulo}}</h1>
 </div>
-
-<form name="formulario" class="row" ng-submit="submeter();">
+<p class="alert alert-info" ng-show="mensagem.length">{{mensagem}}</p>
+<form novalidate name="formulario" class="row" ng-submit="submeter();">
     <div class="col-md-6">
         <div class="form-group">
             <label>Título</label>
-            <input name="titulo" ng-model="foto.titulo" class="form-control">    
+            <input name="titulo" ng-model="foto.titulo" ng-maxlength="20" class="form-control" required> 
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required">Título obrigatório</span>   
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.maxlength">No máximo 20 caracteres</span>   
         </div>
         <div class="form-group">
             <label>URL</label>
-            <input name="url" ng-model="foto.url" class="form-control">
+            <input name="url" ng-model="foto.url" class="form-control" required>
+            <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.url.$error.required">URL obrigatória</span>   
         </div>
         <div class="form-group">
             <label>Descrição</label>
@@ -18,13 +21,13 @@
             </textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" ng-disabled="formulario.$invalid" class="btn btn-primary">
             Salvar
         </button>
             <a href="/" class="btn btn-primary">Voltar</a>
         <hr>
     </div>
     <div class="col-md-6">
-        <minha-foto></minha-foto>
+        <minha-foto url="{{foto.url}}" titulo="{{foto.titulo}}"></minha-foto>
     </div>
 </form>
