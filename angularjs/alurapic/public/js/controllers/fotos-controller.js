@@ -13,7 +13,7 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
     $scope.remover = function(foto) {
         $http.delete('/v1/fotos/' + foto._id)
         .success(function() {
-            $scope.mensagem = 'Foto excluida';
+            $scope.mensagem = 'Foto ' + foto.titulo +' excluída';
             var indiceFoto = $scope.fotos.indexOf(foto);
             $scope.fotos.splice(indiceFoto, 1);
         })
