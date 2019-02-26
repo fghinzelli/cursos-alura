@@ -21,4 +21,15 @@ angular.module('minhasDiretivas', [])
         template: `<img class="img-responsive center-block" src="{{url}}" alt="{{titulo}}">`
     }
     return ddo;
+})
+.directive('meuBotaoPerigo', function() {
+    var ddo = {
+        restrict: 'E',
+        scope: {
+            nome: '@',
+            acao: '&'
+        },
+        template: '<button class="btn btn-danger btn-block" ng-click="acao()">{{nome}}</button>'
+    }
+    return ddo;
 });
