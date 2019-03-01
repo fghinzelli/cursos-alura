@@ -1,8 +1,6 @@
-angular.module('alurapic').controller('FotosController', function($scope, $resource) {
+angular.module('alurapic').controller('FotosController', function($scope, recursoFoto) {
     
     $scope.fotos = [];
-
-    var recursoFoto = $resource('/v1/fotos/:fotoId');
 
     recursoFoto.query(function(fotos) {
         $scope.fotos = fotos;
