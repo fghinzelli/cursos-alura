@@ -2,29 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Aprendendo IndexedDB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Indexed DB</title>
 </head>
 <body>
     <script src="js/app/models/Negociacao.js"></script>
     <script>
         var connection;
-        var openRequest = window.indexedDB.open('aluraframe', 3)
-        
+        var openRequest = window.indexedDB.open('meuteste', 3);
+
         openRequest.onupgradeneeded = e => {
-            console.log('Cria ou altera um banco já existente');
+            console.log('Cria ou altera um banco existente');
             let minhaConexao = e.target.result;
-            if (minhaConexao.objectStoreNames.contains('negociacoes')) {
+            if(minhaConexao.objectStoreNames.contains('negociacoes')) {
                 minhaConexao.deleteObjectStore('negociacoes');
             }
             minhaConexao.createObjectStore('negociacoes', {autoIncrement: true});
-        };
+        }
 
         openRequest.onsuccess = e => {
             console.log('Conexão obtida com sucesso');
             connection = e.target.result;
-        };
-        openRequest.onerror = e =>
+        }
+
+        openRequest.error = e => {
             console.log(e.target.error);
+        }
 
         function adiciona() {
             let transaction = connection.transaction(['negociacoes'], 'readwrite');
@@ -32,37 +36,35 @@
             let negociacao = new Negociacao(new Date(), 200, 1);
             let request = store.add(negociacao);
 
-            request.onsuccess = function(e) {
-                console.log("Negociacao adicionada com sucesso");
-            }
+            request.onsuccess = e => 
+                console.log("Negociacao incluída com sucesso");
 
-            request.onerror = function(e) {
-                console.log("Não foi possível incluir a negociacao");
-            }
+            request.onerror = e => 
+                console.log('Não foi possível incluir a negociacao');
         }
 
+
         function listaTodos() {
-            let transaction = connection.transaction('negociacoes', 'readwrite');
+            let transaction = connection.transaction(['negociacoes'], 'readwrite');
             let store = transaction.objectStore('negociacoes');
+
             let negociacoes = [];
 
             let cursor = store.openCursor();
 
             cursor.onsuccess = e => {
                 let atual = e.target.result;
-                if(atual) {
+                if (atual) {
                     negociacoes.push(atual.value);
                     atual.continue();
+                    //negociacoes.push(new Negociacao(atual._date, atual._valor, atual._quantidade));
                 } else {
-                    // quando não há mais objects em nossa store.
-                    // Isso significa que já terminados de popular negociacoes
                     console.log(negociacoes);
                 }
-            };
-
-            cursor.onerror = e => {
-                console.log(e.target.error.name);
             }
+
+            cursor.error = e =>
+                console.log(e.target.error);
         }
 
     </script>
