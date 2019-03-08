@@ -1,4 +1,5 @@
 var ConnectionFactory = (function() { 
+
     const stores = ['negociacoes'];
     const version = 4;
     const dbName = 'aluraframe';
@@ -46,6 +47,7 @@ var ConnectionFactory = (function() {
                 if(connection.objectStoreNames.contains(store)) 
                     connection.deleteObjectStore(store);
                 connection.createObjectStore(store, {autoIncrement: true});
+
             });
         }
 
