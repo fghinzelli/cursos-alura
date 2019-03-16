@@ -30,7 +30,7 @@ class NegociacaoController {
                 negociacoes.forEach(negociacao =>
                     this._listaNegociacoes.adiciona(negociacao)))
             .catch(erro => this._mensagem.texto = erro);
-
+        
         setInterval(() => {
             this.importaNegociacoes()
         }, 2000);
