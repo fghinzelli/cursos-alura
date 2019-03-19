@@ -1,4 +1,9 @@
-class NegociacaoService {
+import {HttpService} from './HttpService';
+import {Negociacao} from '../models/Negociacao';
+import {ConnectionFactory} from '../services/ConnectionFactory';
+import {NegociacaoDao} from '../dao/NegociacaoDao';
+
+export class NegociacaoService {
     
     constructor() {
         
@@ -12,7 +17,6 @@ class NegociacaoService {
             this._http
                 .get('negociacoes/semana')
                 .then(negociacoes => {
-                    console.log(negociacoes);
                     resolve(negociacoes.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor)));
                 })
                 .catch(erro => {
@@ -29,7 +33,6 @@ class NegociacaoService {
             this._http
                 .get('negociacoes/anterior')
                 .then(negociacoes => {
-                    console.log(negociacoes);
                     resolve(negociacoes.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor)));
                 })
                 .catch(erro => {
@@ -48,7 +51,6 @@ class NegociacaoService {
             this._http
                 .get('negociacoes/retrasada')
                 .then(negociacoes => {
-                    console.log(negociacoes);
                     resolve(negociacoes.map(objeto => new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor)));
                 })
                 .catch(erro => {
