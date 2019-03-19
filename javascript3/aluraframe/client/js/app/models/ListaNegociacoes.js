@@ -52,6 +52,16 @@ System.register([], function (_export, _context) {
                         this._negociacoes = [];
                     }
                 }, {
+                    key: "ordena",
+                    value: function ordena(criterio) {
+                        this._negociacoes.sort(criterio);
+                    }
+                }, {
+                    key: "inverteOrdem",
+                    value: function inverteOrdem() {
+                        this._negociacoes.reverse();
+                    }
+                }, {
                     key: "negociacoes",
                     get: function get() {
 

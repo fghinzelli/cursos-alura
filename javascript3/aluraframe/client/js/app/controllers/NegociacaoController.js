@@ -3,7 +3,7 @@
 System.register(['../models/Mensagem', '../models/Negociacao', '../models/ListaNegociacoes', '../views/NegociacoesView', '../views/MensagemView', '../services/NegociacaoService', '../helpers/DateHelper', '../helpers/Bind'], function (_export, _context) {
     "use strict";
 
-    var Mensagem, Negociacao, ListaNegociacoes, NegociacoesView, MensagemView, NegociacaoService, DateHelper, Bind, _createClass, NegociacaoController;
+    var Mensagem, Negociacao, ListaNegociacoes, NegociacoesView, MensagemView, NegociacaoService, DateHelper, Bind, _createClass, NegociacaoController, negociacaoController;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -48,7 +48,7 @@ System.register(['../models/Mensagem', '../models/Negociacao', '../models/ListaN
                 };
             }();
 
-            _export('NegociacaoController', NegociacaoController = function () {
+            NegociacaoController = function () {
                 function NegociacaoController() {
                     _classCallCheck(this, NegociacaoController);
 
@@ -58,7 +58,7 @@ System.register(['../models/Mensagem', '../models/Negociacao', '../models/ListaN
                     this._inputQuantidade = $('#quantidade');
                     this._inputValor = $('#valor');
 
-                    this._listaNegociacoes = new Bind(new ListaNegociacoes(), new NegociacoesView($('#negociacoesView')), 'adiciona', 'esvazia');
+                    this._listaNegociacoes = new Bind(new ListaNegociacoes(), new NegociacoesView($('#negociacoesView')), 'adiciona', 'esvazia', 'ordena', 'inverteOrdem');
 
                     this._mensagem = new Bind(new Mensagem(), new MensagemView($('#mensagemView')), 'texto');
 
@@ -142,12 +142,29 @@ System.register(['../models/Mensagem', '../models/Negociacao', '../models/ListaN
                         this._inputValor.value = 0.0;
                         this._inputData.focus();
                     }
+                }, {
+                    key: 'ordena',
+                    value: function ordena(coluna) {
+                        if (this._ordemAtual == coluna) {
+                            this._listaNegociacoes.inverteOrdem();
+                        } else {
+                            this._listaNegociacoes.ordena(function (p, s) {
+                                return p[coluna] - s[coluna];
+                            });
+                        }
+                        this._ordemAtual = coluna;
+                    }
                 }]);
 
                 return NegociacaoController;
-            }());
+            }();
 
-            _export('NegociacaoController', NegociacaoController);
+            negociacaoController = new NegociacaoController();
+            function currentInstance() {
+                return negociacaoController;
+            }
+
+            _export('currentInstance', currentInstance);
         }
     };
 });
