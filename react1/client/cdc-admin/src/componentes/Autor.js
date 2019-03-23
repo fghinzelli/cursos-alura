@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import InputCustomizado from './InputCustomizado';
 import InputSubmit from './InputSubmit';
+import PubSub from 'pubsub-js';
+import TratadorErros from './TratadorErros'
 
 class FormularioAutor extends Component {
 
@@ -22,11 +24,17 @@ class FormularioAutor extends Component {
           dataType: 'json',
           type: 'post',
           data: JSON.stringify({nome: this.state.nome, email: this.state.email, senha: this.state.senha}),
-          success: function(resposta) {
-            this.props.callBackAtualizaListagem(resposta);
-          }.bind(this),
+          success: (novaListagem) => {
+            PubSub.publish('atualiza-lista-autores', novaListagem)
+            this.setState({nome: '', email: '', senha: ''});
+          },
           error: function(resposta) {
-            console.log("erro");
+            if (resposta.status === 400) {
+                new TratadorErros().publicaErros(resposta.responseJSON);
+            }
+          },
+          beforeSend: function() {
+              PubSub.publish('limpa-erros', {});
           }
         });
       }
@@ -92,7 +100,6 @@ export default class AutorBox extends Component {
     constructor() {
         super();
         this.state = {lista: []}
-        this.atualizaListagem = this.atualizaListagem.bind(this);
     };
 
     componentDidMount() {
@@ -103,16 +110,16 @@ export default class AutorBox extends Component {
             this.setState({lista:resposta});
             }.bind(this)
         });
-    }
 
-    atualizaListagem(novaLista) {
-        this.setState({lista:novaLista})
+        PubSub.subscribe('atualiza-lista-autores', function(topico, novaListagem) {
+            this.setState({lista: novaListagem});
+        }.bind(this));
     }
 
     render() {
         return(
             <div>
-                <FormularioAutor callBackAtualizaListagem={this.atualizaListagem}/>
+                <FormularioAutor />
                 <TabelaAutores lista={this.state.lista}/>
             </div>
         );
