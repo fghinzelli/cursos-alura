@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
-import AutorBox from './componentes/Autor';
-
+import { Link } from 'react-router';
 
 
 class App extends Component {
@@ -10,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <div id="layout">
-        <Router >
           <a href="#menu" id="menuLink" className="menu-link">
               <span></span>
           </a>
@@ -26,18 +24,10 @@ class App extends Component {
                   </ul>
               </div>
           </div>
-
           <div id="main">
-            <Route exact path='/'>
-            <div className="header">
-                  <h1>Bem vindo ao sistema</h1>
-              </div>
-            </Route>
-            <Route path="/autor" component={AutorBox}></Route>
+            {this.props.children}
           </div>
-          </Router>
-      </div>
-      
+      </div>      
     );
   }
 }
