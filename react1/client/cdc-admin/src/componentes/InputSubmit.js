@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function InputSubmit(props) {
-    return(
-        <div className="pure-control-group">     
-            <label></label>                             
-            <button type="submit" className="pure-button pure-button-primary">{props.title}</button>                                    
-        </div>
-    );
+export default class InputSubmit extends Component {
+    render() {
+        return (
+            <div className="pure-control-group">                                  
+                <label></label> 
+                <button type="submit" className="pure-button pure-button-primary">{this.props.label}</button>                                    
+            </div>
+        );
+    }
 }
