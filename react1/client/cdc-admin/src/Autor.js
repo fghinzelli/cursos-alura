@@ -111,7 +111,6 @@ export default class AutorBox extends Component {
             url: "https://cdc-react.herokuapp.com/api/autores",
             datatype: 'json',
             success: function(resposta) {
-                console.log('Chegou a resposta');
                 this.setState({lista: resposta});
             }.bind(this)
         });
@@ -124,8 +123,13 @@ export default class AutorBox extends Component {
     render() {
         return(
             <div>
-                <FormularioAutor />
-                <TabelaAutores lista={this.state.lista} />
+                <div className='header'>
+                    <h1>Cadastro de autores</h1>
+                </div>
+                <div className='content' id='content'>
+                    <FormularioAutor />
+                    <TabelaAutores lista={this.state.lista} />
+                </div>
             </div>
         );
     }
