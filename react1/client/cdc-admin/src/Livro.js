@@ -64,12 +64,13 @@ export class FormularioLivro extends Component {
                 <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method='post'>
                     <InputCustomizado id="titulo" type="text" name="titulo" value={this.state.titulo} onChange={this.setTitulo} label="Título" />
                     <InputCustomizado id="preco" type="text" name="preco" value={this.state.preco} onChange={this.setPreco} label="Email" />
-                    <div className="pure-controls">
-                        <select id="autorId" name="autorId" value={this.state.autorId} onChange={this.setAutorId} label="Autor">
+                    <div className="pure-control-group">
+                        <label hmlFor="autorId">Autor</label>
+                        <select name="autorId" id="autorId" onChange={this.setAutorId}>
                             <option value="">Selecione</option>
                             {
                                 this.props.autores.map(function(autor) {
-                                    return <option value={autor.id} key={autor.id}>{autor.nome}</option>;
+                                    return <option value={autor.id}>{autor.nome}</option>;
                                 })
                             }
                             
@@ -136,7 +137,7 @@ export default class LivroBox extends Component {
             dataType: 'json',
             success: function(resposta) {
                 this.setState({autores: resposta})
-            }
+            }.bind(this)
         })
         
         PubSub.subscribe('atualiza-lista-livros', function(topico, novaListagem) {
