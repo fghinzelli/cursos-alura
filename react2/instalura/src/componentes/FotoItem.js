@@ -21,7 +21,9 @@ class FotoInfo extends Component {
             <div className="foto-info">
               <div className="foto-info-likes">
                 {
-                  this.props.foto.likers.map(liker => <a href="#">{liker.login}, </a>)
+                  this.props.foto.likers.map(liker => {
+                    return (<a href="#">{liker.login}, </a>)
+                  })
                 }
                  curtiram
               </div>
@@ -32,26 +34,16 @@ class FotoInfo extends Component {
               </p>
 
               <ul className="foto-info-comentarios">
-                
                   {
                     this.props.foto.comentarios.map(comentario => {
                       return (
                         <li className="comentario">
-                          <a className="foto-info-autor">seguidor </a>
+                          <a className="foto-info-autor">{comentario.login} </a>
                           {comentario.texto}
                         </li>
                       );
                     })
                   }
-                  
-                <li className="comentario">
-                  <a className="foto-info-autor">seguidor </a>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cumque earum molestias voluptatem modi nihil sit magnam ratione eveniet distinctio magni error asperiores dignissimos tempora expedita, laborum ex soluta hic maiores veritatis deserunt.
-                </li>
-                <li className="comentario">
-                  <a className="foto-info-autor">seguidor </a>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum laudantium quae ab fuga odio delectus maiores voluptatibus sit commodi quidem.
-                </li>
               </ul>
             </div>            
         );
