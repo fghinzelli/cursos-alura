@@ -3,8 +3,8 @@ import FotoItem from './FotoItem';
 
 export default class Timeline extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       fotos: []
     }
@@ -14,10 +14,11 @@ export default class Timeline extends Component {
   carregaFotos() {
     let urlPerfil;
 
+    console.log('PERFIL ', this.perfil)
     if(this.login === undefined) {
       urlPerfil = `https://instalura-api.herokuapp.com/api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`;
     } else {
-      urlPerfil = `https://instalura-api.herokuapp.com/api/fotos/${this.login}`;
+      urlPerfil = `https://instalura-api.herokuapp.com/api/public/fotos/${this.login}`;
     }
 
     fetch(urlPerfil)
