@@ -8,16 +8,36 @@ export default class Timeline extends Component {
     this.state = {
       fotos: []
     }
+    this.login = this.props.login;
+  }
+
+  carregaFotos() {
+    let urlPerfil;
+
+    if(this.login === undefined) {
+      urlPerfil = `https://instalura-api.herokuapp.com/api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`;
+    } else {
+      urlPerfil = `https://instalura-api.herokuapp.com/api/fotos/${this.login}`;
+    }
+
+    fetch(urlPerfil)
+    .then(response => response.json())
+    .then(fotos => {
+      this.setState({fotos: fotos});
+    })
   }
 
   componentDidMount() {
-    //fetch(`https://instalura-api.herokuapp.com/api/public/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`)
-    fetch(`https://instalura-api.herokuapp.com/api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`)
-    .then(response => response.json())
-    .then(fotos => {
-      this.setState({fotos:fotos});
-    });
+    this.carregaFotos();
   }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.login !== undefined) {
+      this.login = nextProps.login;
+      this.carregaFotos();
+    }
+  }
+
   render(){
       return (
       <div className="fotos container">
