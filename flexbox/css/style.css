@@ -83,7 +83,7 @@ body {
 }
 
 .conteudoPrincipal-cursos-link:nth-child(even) a:before {
-	background: url(../img/background1.svg) no-repeat;	
+	background: url(../img/background1.svg) no-repeat;
 }
 
 .conteudoPrincipal-cursos-link:nth-child(odd) a:before {
@@ -159,7 +159,7 @@ body {
 	background-color: #4DBA7A;
 	color: #FFF;
 	cursor: pointer;
-	
+
 }
 
 .rodapePrincipal-contatoForm-submit,
@@ -212,7 +212,7 @@ body {
 @media(min-width: 769px) {
 
 	.container {
-		width: 85%;	
+		width: 85%;
 	}
 
 	.subtitulo {
@@ -247,17 +247,24 @@ body {
 		text-align: left;
 	}
 
+
+	/* 
 	.conteudoPrincipal-cursos-link:nth-child(3n) {
 		margin-right: 0;
 	}
-
+	
+	
 	.conteudoPrincipal-cursos-link:nth-child(3n+1) {
 		margin-left: 0;
-	}
+	} 
+	*/
+	
 
 }
 
 @media(min-width: 1000px) {
+
+	/* 	
 	.conteudoPrincipal-cursos-link {
 		margin: 1.333%;
 	}
@@ -277,7 +284,8 @@ body {
 	.conteudoPrincipal-cursos-link:nth-child(4n+1) {
 		margin-left: 0;
 	}
-
+	 */
+	 
 	.videoSobre-sobre {
 		margin-left: 1.5em;
 	}
