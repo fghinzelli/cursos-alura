@@ -15,3 +15,5 @@ class Conta:
     def extrato(self):
         print("{0}, seu saldo é de R$ {1}".format(self.titular, self.saldo))
 
+    def pega_saldo(self):
+        return self.__saldo
