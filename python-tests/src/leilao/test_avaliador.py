@@ -1,6 +1,8 @@
 from unittest import TestCase
+from dominio import Usuario, Leilao, Lance, Avaliador
 
-class teste1(TestCase):
+
+class test_avalia(TestCase):
 
     def test_ok(self):
 
@@ -12,6 +14,15 @@ class teste1(TestCase):
 
         leilao = Leilao ('Celular')
 
-        leilao.lances.append(lance_user1, lance_user2)
+        leilao.lances.append(lance_user1)
+        leilao.lances.append(lance_user2)
+        
 
-        self.assertEqual(leilao.lances)
+        avaliador = Avaliador()
+        avaliador.avalia(leilao)
+
+        menor_valor_esperado = 1000
+        maior_valor_esperado = 2000
+
+        self.assertEqual(maior_valor_esperado, avaliador.maior_lance)
+        self.assertEqual(menor_valor_esperado, avaliador.menor_lance)

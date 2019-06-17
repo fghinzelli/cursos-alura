@@ -11,8 +11,9 @@ lance_user2 = Lance(user2, 2000)
 
 leilao = Leilao ('Celular')
 
-leilao.lances.append(lance_user1)
 leilao.lances.append(lance_user2)
+leilao.lances.append(lance_user1)
+
 
 
 for lance in leilao.lances:
