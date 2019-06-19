@@ -1,12 +1,12 @@
 from unittest import TestCase
-from dominio import Usuario, Leilao, Lance
+from src.leilao.dominio import Usuario, Leilao, Lance
 
 
 class test_avalia(TestCase):
 
     def setUp(self):
-        self.user1 = Usuario('Fernando')
-        self.user2 = Usuario('Mariel')
+        self.user1 = Usuario('Fernando', 1000)
+        self.user2 = Usuario('Mariel', 4000)
         self.leilao = Leilao ('Celular')
 
         self.lance1 = Lance(self.user1, 1000)
