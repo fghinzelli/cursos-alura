@@ -1,3 +1,4 @@
 .vscode/
+.idea/
 ve-python-tests
 *.pyc

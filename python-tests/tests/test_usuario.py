@@ -1,6 +1,6 @@
-from src.leilao.dominio import Usuario, Lance, Leilao
 import pytest
-
+from src.leilao.excecoes import LanceInvalido
+from src.leilao.dominio import Usuario, Lance, Leilao
 
 @pytest.fixture
 def usuario():
@@ -31,7 +31,7 @@ def test_deve_permitir_propor_lance_quando_o_valor_eh_igual_ao_valor_da_carteira
 
 def test_nao_deve_permitir_propor_lance_maior_que_o_valor_da_carteira(usuario, leilao):
     
-    with pytest.raises(ValueError):
+    with pytest.raises(LanceInvalido):
         usuario = Usuario('Fulano', 100)
         leilao = Leilao('Celular')
         usuario.propoe_lance(leilao, 150.0)

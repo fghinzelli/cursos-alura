@@ -1,5 +1,6 @@
 from unittest import TestCase
 from src.leilao.dominio import Usuario, Leilao, Lance
+from src.leilao.excecoes import LanceInvalido
 
 
 class test_avalia(TestCase):
@@ -23,7 +24,7 @@ class test_avalia(TestCase):
         self.assertEqual(menor_valor_esperado, self.leilao.menor_lance)
 
     def test_nao_deve_permitir_propor_um_lance_com_valor_menor_ao_anterior(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(LanceInvalido):
             self.leilao.propoe(self.lance2)
             self.leilao.propoe(self.lance1)
 
@@ -50,6 +51,6 @@ class test_avalia(TestCase):
 
     def test_nao_deve_permitir_propor_lance_caso_o_usuario_seja_o_mesmo(self):
         
-        with self.assertRaises(ValueError):
+        with self.assertRaises(LanceInvalido):
             self.leilao.propoe(self.lance1)
             self.leilao.propoe(self.lance1)
