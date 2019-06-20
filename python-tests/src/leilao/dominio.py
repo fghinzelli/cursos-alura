@@ -1,4 +1,3 @@
-import sys
 from src.leilao.excecoes import LanceInvalido
 
 
@@ -39,8 +38,8 @@ class Leilao:
     def __init__(self, descricao):
         self.__descricao = descricao
         self.__lances = []
-        self.maior_lance = sys.float_info.min
-        self.menor_lance = sys.float_info.max
+        self.maior_lance = 0.0
+        self.menor_lance = 0.0
 
     def propoe(self, lance: Lance):
         if self._lance_eh_valido(lance):
