@@ -2,7 +2,6 @@
 
 use estoque;
 
-/*
 
 CREATE TABLE categorias
 (
@@ -10,7 +9,6 @@ CREATE TABLE categorias
   nome VARCHAR(50) NOT NULL,
   PRIMARY KEY(id)
 );
-*/
 
 CREATE TABLE produtos
 (

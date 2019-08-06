@@ -1,15 +1,16 @@
-<?php
+<?php 
     require_once 'global.php';
 
+    $nome = $_POST['nome'];
+    $id = $_POST['id'];
+
     try {
-        $categoria = new Categoria();
-        $nome = $_POST['nome'];
+        $categoria = new Categoria($id);
         $categoria->nome = $nome;
-        $categoria->inserir();
+        $categoria->atualizar();
     } catch(Exception $e) {
         Erro::trataErro($e);
     }
 
     header('Location: categorias.php');
-
 ?>
