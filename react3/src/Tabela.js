@@ -21,7 +21,9 @@ const TableBody = (props) => {
                 <td>{autor.nome}</td>
                 <td>{autor.livro}</td>
                 <td>{autor.preco}</td>
-                <td><button onClick={() => props.removeAutor(index)}>Remover</button></td>
+                <td><button 
+                    className="waves-effect waves-light indigo lighten-2 btn"
+                    onClick={() => props.removeAutor(index)}>Remover</button></td>
             </tr>
         );
     })
@@ -38,7 +40,7 @@ export default class Tabela extends Component {
     render() {
         const {autores, removeAutor} = this.props; 
         return(
-            <table>
+            <table className="centered highlight">
                 <TableHead />
                 <TableBody autores={autores} removeAutor={removeAutor}/>
             </table>

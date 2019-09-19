@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import Tabela from './Tabela';
-import ContaClicks from './ContaClicks';
 import Formulario from './Formulario';
-
+import 'materialize-css/dist/css/materialize.min.css';
+import './App.css';
+import Header from './Header';
+import Footer from './Footer';
 
 class App extends Component {
   state = {
@@ -47,10 +49,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container mb-10">
+        <Header />
         <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />  
-        <ContaClicks />
         <Formulario escutadorDeSubmit={this.escutadorDeSubmit} />
+        <Footer />
       </div>
       
     );
