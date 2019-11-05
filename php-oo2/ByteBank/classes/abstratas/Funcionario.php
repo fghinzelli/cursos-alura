@@ -12,7 +12,7 @@
             $this->salario = $salario;
         }
         
-        public function aumentarSalario() {
+        final public function aumentarSalario() {
             $this->salario *= 1.5;
         }
         
