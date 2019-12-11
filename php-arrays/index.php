@@ -1,11 +1,23 @@
 <?php
-    $nomes = 'Fernando, Mariel, Beatriz';
+declare(strict_types=1);
 
-    $nomes = explode(', ', $nomes);
-    foreach ($nomes as $nome) {
-        echo "<p>$nome</p>";
-    }
+namespace Alura;
+require "autoload.php";
 
-    $nomes_juntos = implode(', ', $nomes);
-    echo $nomes_juntos;
+$lista = [
+    "Giovanni",
+    12,
+    "Maria",
+    25,
+    "Luis",
+    "Luísa",
+    "12"
+];
+
+echo "<pre>";
+var_dump($lista);
+ArrayUtils::remover('12', $lista);
+
+var_dump($lista);
+echo "</pre>";
 ?>
