@@ -14,10 +14,33 @@ $lista = [
     "12"
 ];
 
-echo "<pre>";
-var_dump($lista);
-ArrayUtils::remover('12', $lista);
+$correntistas = [
+    'Giovanni',
+    'João',
+    'Maria',
+    'Luis',
+    'Luisa',
+    'Rafael',
+];
 
-var_dump($lista);
+$saldos = [
+    2500,
+    3000,
+    4400,
+    1000,
+    8700,
+    9000,
+];
+
+echo "<pre>";
+$maiores = [];
+$relacionados = array_combine($correntistas, $saldos);
+foreach($relacionados as $chave => $valor){
+    if ($valor > 3000) {
+        $maiores[] = $chave;
+    }
+}
+
+echo var_dump($maiores);
 echo "</pre>";
 ?>
