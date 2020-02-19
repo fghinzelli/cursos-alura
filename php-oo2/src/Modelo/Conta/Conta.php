@@ -1,5 +1,7 @@
 <?php
 
+namespace Alura\Banco\Modelo\Conta;
+
 class Conta
 {
     private $titular;
@@ -57,12 +59,12 @@ class Conta
 
     public function recuperaNomeTitular(): string
     {
-        return $this->titular->recuperaNome();
+        return $this->titular->getNome();
     }
 
     public function recuperaCpfTitular(): string
     {
-        return $this->titular->recuperaCpf();
+        return $this->titular->getCpf();
     }
 
     public static function recuperaNumeroDeContas(): int
