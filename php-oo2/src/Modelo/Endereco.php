@@ -49,4 +49,16 @@ class Endereco
         $this->numero = $numero;
     }
 
+    public function __toString(): string
+    {
+        return "{$this->rua}, {$this->numero}, {$this->bairro}, {$this->cidade}";
+    }
+
+    use AcessoPropriedades;
+
+    public function __set($nomeAtributo, $value)
+    {
+        $metodo = 'set' . ucfirst($nomeAtributo);
+        $this->$metodo($value);
+    }
 }
