@@ -6,8 +6,7 @@ use Alura\Banco\Modelo\Pessoa;
 use Alura\Banco\Modelo\Endereco;
 use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Conta\Titular;
-use Alura\Banco\Modelo\Conta\ContaCorrente;
-use Alura\Banco\Modelo\Conta\ContaPoupanca;
+use Alura\Banco\Modelo\Conta\{ContaCorrente, ContaPoupanca};
 
 $endereco = new Endereco('Antonio Prado', 'Centro', 'Rua X', '102');
 $vinicius = new Titular('Vinicius Dias', new CPF('123.456.789-10'), $endereco);
