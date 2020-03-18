@@ -6,11 +6,11 @@ use Alura\Banco\Modelo\Pessoa;
 use Alura\Banco\Modelo\Endereco;
 use Alura\Banco\Modelo\CPF;
 use Alura\Banco\Modelo\Conta\Titular;
-use Alura\Banco\Modelo\Conta\Conta;
+use Alura\Banco\Modelo\Conta\{ContaCorrente, ContaPoupanca};
 
 $endereco = new Endereco('Antonio Prado', 'Centro', 'Rua X', '102');
 $vinicius = new Titular('Vinicius Dias', new CPF('123.456.789-10'), $endereco);
-$primeiraConta = new Conta($vinicius);
+$primeiraConta = new ContaCorrente($vinicius);
 $primeiraConta->deposita(500);
 $primeiraConta->saca(300); // isso é ok
 
@@ -19,10 +19,10 @@ echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
 echo $primeiraConta->recuperaSaldo() . PHP_EOL;
 
 $patricia = new Titular('Patricia', new CPF('698.549.548-10'), $endereco);
-$segundaConta = new Conta($patricia);
+$segundaConta = new ContaPoupanca($patricia);
 var_dump($segundaConta);
 
 $outroEndereco = new Endereco('a', 'b', 'c', '10d');
-$outra = new Conta(new Titular('Fulano', new CPF('123.654.789-01'), $outroEndereco));
+$outra = new ContaCorrente(new Titular('Fulano', new CPF('123.654.789-01'), $outroEndereco));
 unset($segundaConta);
-echo Conta::recuperaNumeroDeContas();
+echo ContaCorrente::recuperaNumeroDeContas();
