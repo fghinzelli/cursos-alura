@@ -5,11 +5,8 @@ const CellDeleta = props => {
 
     if (!props.removeDados) {
         return null;
-    } 
-    
-    if (props.tipo === 'titulo') {
-        return <TableCell>Remover</TableCell >;
-    }         
+    }
+           
     return (
         <TableCell>
             <Button
@@ -20,6 +17,14 @@ const CellDeleta = props => {
     )
 }
 
+const TituloDeleta = props => {
+    if (!props.removeDados) {
+        return null;
+    } 
+    
+    return <TableCell>Remover</TableCell >;
+}
+
 const Tabela = props => {
     const { campos, dados, removeDados } = props;
 
@@ -28,7 +33,7 @@ const Tabela = props => {
             <TableHead>
                 <TableRow>
                     { campos.map(campo => <TableCell>{ campo.titulo }</TableCell>) }
-                    <CellDeleta removeDados={removeDados} tipo="titulo"/>
+                    <TituloDeleta removeDados={removeDados} />
                 </TableRow>
             </TableHead>
             <TableBody>
