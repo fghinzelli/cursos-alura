@@ -1,32 +1,24 @@
 let port = '8090';
+const urlBase = `http://localhost:${port}/api/autor`;
 
-const ApiService = {
-
-    ListaAutores : () =>{
-        return fetch(`http://localhost:${port}/api/autor`)
+const consomeApi = (parametro = '', metodo='GET', body) => {
+    return fetch(
+        `${urlBase}/${parametro}`, 
+        { 
+            method: metodo,
+            headers: {'content-type': 'application/json'},
+            body: body
+        })
         .then(res => ApiService.TrataErros(res))
         .then(res => res.json());
-    },
-    CriaAutor : autor => {
-        return fetch(`http://localhost:${port}/api/autor`, {method: 'POST', headers: {'content-type': 'application/json'}, body: autor})
-        .then(res => ApiService.TrataErros(res))
-        .then(res => res.json());;
-    },
-    ListaNomes: () =>{
-        return fetch(`http://localhost:${port}/api/autor/nome`)
-        .then(res => ApiService.TrataErros(res))
-        .then(res => res.json());;
-    },
-    ListaLivros: () => {
-        return fetch(`http://localhost:${port}/api/autor`)
-        .then(res => ApiService.TrataErros(res))
-        .then(res => res.json());;
-    },
-    RemoveAutor: id => {
-        return fetch(`http://localhost:${port}/api/autor/${id}`, {method: 'DELETE', headers: { 'content-type' : 'application/json'},})
-        .then(res => ApiService.TrataErros(res))
-        .then(res => res.json());;
-    },
+}
+
+const ApiService = {
+    ListaAutores : () => consomeApi(),
+    CriaAutor : autor => consomeApi('', 'POST', autor),
+    ListaNomes: () => consomeApi('nome'),
+    ListaLivros: () => consomeApi(),
+    RemoveAutor: id => consomeApi(id, 'DELETE'),
     TrataErros : res =>{
         if(!res.ok){
             

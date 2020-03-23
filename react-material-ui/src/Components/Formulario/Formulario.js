@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextField, Grid, Button, Snackbar } from '@material-ui/core';
 import FormValidator from '../../utils/FormValidator';
-import PopUp from '../../utils/ '
+import Toast from '../Toast/Toast';
 
 class Formulario extends Component {
 
@@ -34,7 +34,12 @@ class Formulario extends Component {
             nome: '',
             livro: '',
             preco: '',
-            validacao: this.validador.valido()
+            validacao: this.validador.valido(),
+            mensagem: {
+                open: false,
+                mensagem: '',
+                tipo: 'success'
+            }
         }
 
         this.state = this.stateInicial;
@@ -61,9 +66,12 @@ class Formulario extends Component {
             const camposInvalidos = campos.filter(elem => {
                 return elem.isInvalid;
             });
-            camposInvalidos.forEach(campo => {
-                PopUp.exibeMensagem('error', campo.mensagem);
-            });
+            const erros = camposInvalidos.reduce((texto, campo) => texto + campo.mensagem + '. ', '')
+            this.setState({ mensagem: {
+                open: true,
+                texto: erros,
+                tipo: 'error'
+            }})
         }
         
     }
@@ -74,7 +82,17 @@ class Formulario extends Component {
 
         return (
             <>
-                <Snackbar open={true} message='Snackbar Teste' autoHideDuration={2000}></Snackbar> 
+                <Toast 
+                    open={this.state.mensagem.open}
+                    handleClose={() => this.setState({ 
+                        mensagem: {
+                            open: false
+                        }
+                    })}
+                    severity={this.state.mensagem.tipo}>
+                    {this.state.mensagem.texto}
+                </Toast>
+
                 <form>
                     <Grid container spacing={2} alignItems='center'>
                         <Grid item>
