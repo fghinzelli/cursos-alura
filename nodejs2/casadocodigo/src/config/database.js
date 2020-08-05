@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS livros (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     titulo TEXT NOT NULL, 
     preco REAL NOT NULL,
-    descricao TEXT DEFAULT ('') NOT NULL
+    descricao TEXT DEFAULT ('') NOT NULL, 
+    url_capa TEXT
 )
 `;
 
@@ -56,8 +57,8 @@ bd.serialize(() => {
     bd.run(INSERIR_LIVRO_2);
 
     bd.each("SELECT * FROM usuarios", (err, usuario) => {
-        //console.log('Usuario: ');
-        //console.log(usuario);
+        console.log('Usuario: ');
+        console.log(usuario);
     });
 });
 

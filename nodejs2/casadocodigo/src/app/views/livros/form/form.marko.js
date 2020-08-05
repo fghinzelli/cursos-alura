@@ -34,7 +34,7 @@ function render(input, out, __component, component, state) {
 
       out.w("<div class=\"alert alert-danger\">" +
         marko_escapeXml(erro.param) +
-        " = " +
+        " - " +
         marko_escapeXml(erro.msg) +
         "</div>");
     });
@@ -42,7 +42,7 @@ function render(input, out, __component, component, state) {
     out.w("</div>");
   }
 
-  out.w("<form action=\"/livros/form\" method=\"post\">");
+  out.w("<form action=\"/livros\" method=\"post\">");
 
   if (data.livro.id) {
     out.w("<div><input type=\"hidden\" name=\"_method\" value=\"PUT\"><input type=\"hidden\" name=\"id\" value=\"" +
