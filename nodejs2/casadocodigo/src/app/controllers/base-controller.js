@@ -1,8 +1,10 @@
 const templates = require('../views/templates');
+const passport = require('passport');
+const LivroController = require('./livro-controller');
 
 class BaseController {
 
-  rotas() {
+  static rotas() {
     return {
       home: '/',
       login: '/login'
@@ -24,8 +26,26 @@ class BaseController {
   }
 
   efetuaLogin() {
-    return function(req, resp) {
-      // login
+    return function(req, resp, next) {
+      
+      const passport = req.passport;
+
+      passport.authenticate('local', (erro, usuario, info) => {
+        if (info) {
+          return resp.marko(templates.base.login);
+        }
+        if (erro) {
+          return next(erro)
+        }
+
+        req.login(usuario, erro => {
+          if (erro) {
+            return next(erro);
+          }
+
+          return resp.redirect(LivroController.rotas().lista)
+        })
+      })(req, resp, next)
     }
   }
 }

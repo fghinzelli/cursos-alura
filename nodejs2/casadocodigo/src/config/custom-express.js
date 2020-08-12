@@ -20,6 +20,9 @@ app.use(methodOverride(function (req, res) {
     }
 }));
 
+const sessaoAutenticacao = require('./sessao-autenticacao');
+sessaoAutenticacao(app);
+
 const rotas = require('../app/rotas/rotas');
 rotas(app);
 
@@ -29,10 +32,13 @@ app.use(function(req, res, next) {
   );
 })
 
+/*
 app.use(function(erro, req, res, next) {
   return res.status(500).marko(
     require('../app/views/base/erros/500.marko')
   )
-})
+});
+*/
+
 
 module.exports = app;

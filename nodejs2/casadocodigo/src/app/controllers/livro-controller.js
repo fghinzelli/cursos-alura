@@ -6,7 +6,7 @@ const templates = require('../views/templates');
 
 class LivroController {
   
-  rotas() {
+  static rotas() {
     return {
       lista: '/livros',
       cadastro: '/livros/form',
