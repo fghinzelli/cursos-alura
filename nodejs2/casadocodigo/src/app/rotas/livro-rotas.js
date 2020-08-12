@@ -1,12 +1,20 @@
 
 const LivroController = require('../controllers/livro-controller');
 const livroController = new LivroController();
-
+const BaseController = require('../controllers/base-controller');
 const Livro = require('../models/livro');
 
 module.exports = (app) => {
     const rotasLivro = LivroController.rotas();
     
+    app.use(rotasLivro.autenticadas, function(req, resp, next) {
+        if(req.isAuthenticated()) {
+            next();
+        } else {
+            resp.redirect(BaseController.rotas().login)
+        }
+    });
+
     app.get(rotasLivro.lista, livroController.lista());
 
     app.route(rotasLivro.cadastro)
