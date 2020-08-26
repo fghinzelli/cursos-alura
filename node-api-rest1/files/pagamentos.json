@@ -1,0 +1,15 @@
+{
+  "pagamento" : {
+    "forma_de_pagamento": "cartao",
+    "valor": 150,
+    "moeda": "BRL",
+    "descricao": "criando um pagamento"
+  },
+  "cartao" : {
+    "numero": 123456478979847,
+    "bandeira": "visa",
+    "ano_de_expiracao": 2016,
+    "med_de_expiracao": 12,
+    "cvv": 123
+  }
+}
