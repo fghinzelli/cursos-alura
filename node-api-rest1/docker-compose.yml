@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  node:
+    container_name: node-dev
+    image: fghinzelli/node
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+    command: npm start
