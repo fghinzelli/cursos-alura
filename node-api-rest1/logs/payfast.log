@@ -1,0 +1,2 @@
+{"level":"info","message":"COnsultando pagamento: 32","timestamp":"2020-09-01T12:30:33.904Z"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [01/Sep/2020:12:30:33 +0000] \"GET /pagamentos/pagamento/32 HTTP/1.1\" 200 158\n","timestamp":"2020-09-01T12:30:33.978Z"}

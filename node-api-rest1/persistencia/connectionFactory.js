@@ -17,7 +17,7 @@ const pmcs = {
 };
 
 function createDBConnection(){
-  return mysql.createConnection(pmcs);
+  return mysql.createConnection(casa);
 }
 
 module.exports = function() {
