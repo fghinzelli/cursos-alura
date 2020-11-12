@@ -94,6 +94,16 @@ footer address:last-child {
 	margin-bottom: 0;
 }
 
+.panel-group .panel {
+ 	display: inline-block;
+	margin: 10px;
+}
+
+.panel-group .panel .panel-heading {
+ 	font-size: 16px; 
+	font-weight: 800;
+}
+
 @media(min-width: 768px) {
 	#paineis-sobre {
 		margin-top: 0;	

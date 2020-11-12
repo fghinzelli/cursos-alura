@@ -1,25 +1,25 @@
 (function() {
-	var id_ativo = 1;
-	var nr_depoimentos = 3;
-  var troca_depoimento = function(novo_id) {
-		document.querySelector("#figura-"+id_ativo+"-depoimentos").classList.remove("active");
-		document.querySelector("#botao-"+id_ativo+"-depoimentos").classList.remove("active");
-		document.querySelector("#figura-"+novo_id+"-depoimentos").classList.add("active");
-		document.querySelector("#botao-"+novo_id+"-depoimentos").classList.add("active");
-		id_ativo = novo_id;
+	var active_id = 1;
+	var testimonies_count = 3;
+  var change_testimony = function(new_id) {
+		document.querySelector("#figure-"+active_id+"-testimonies").classList.remove("active");
+		document.querySelector("#button-"+active_id+"-testimonies").classList.remove("active");
+		document.querySelector("#figure-"+new_id+"-testimonies").classList.add("active");
+		document.querySelector("#button-"+new_id+"-testimonies").classList.add("active");
+		active_id = new_id;
 	}
  document.querySelector(".left").addEventListener("click", function() {
- 	troca_depoimento(id_ativo - 1 + nr_depoimentos * (id_ativo == 1));
+ 	change_testimony(active_id - 1 + testimonies_count * (active_id == 1));
  });
 
  document.querySelector(".right").addEventListener("click", function() {
- 	troca_depoimento(id_ativo + 1 - nr_depoimentos * (id_ativo == nr_depoimentos));
+ 	change_testimony(active_id + 1 - testimonies_count * (active_id == testimonies_count));
  });
 
- for(var i=1; i<=nr_depoimentos; i++) {
+ for(var i=1; i<=testimonies_count; i++) {
 	(function(id) {
-		document.querySelector('#botao-'+id+'-depoimentos').addEventListener('click', function() {
-			troca_depoimento(id);
+		document.querySelector("#button-"+id+"-testimonies").addEventListener("click", function() {
+			change_testimony(id);
 		});
 	})(i);
  };
