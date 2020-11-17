@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: 'mariadb-localhost'
+    ports:
+     - 3307:3306
+    volumes:
+     - "${PWD}/mysql:/var/lib/mysql"
+     - "${PWD}/backup:/backup"
+    environment:
+      MYSQL_ROOT_PASSWORD: "gerade"
+      MYSQL_DATABASE: "mariadb-localhost"
+      MYSQL_USER: "mariadb-user"
+      MYSQL_PASSWORD: "mariadb-pwd"
