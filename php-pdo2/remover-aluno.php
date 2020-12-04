@@ -6,8 +6,7 @@ require_once 'vendor/autoload.php';
 
 $pdo = ConnectionCreator::createConnection();
 
-$sqlDelete = "DELETE FROM students WHERE id = ?;";
-$preparedStatement = $pdo->prepare($sqlDelete);
+$preparedStatement = $pdo->prepare("DELETE FROM students WHERE id = ?;");
 $preparedStatement->bindValue(1, 2, PDO::PARAM_INT);
 var_dump($preparedStatement->execute());
 

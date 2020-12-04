@@ -7,6 +7,7 @@ use DateTimeInterface;
 
 interface StudentRepository
 {
+
   public function allStudents(): array;
 
   public function studentsBirthAt(DateTimeInterface $birthDate): array;
