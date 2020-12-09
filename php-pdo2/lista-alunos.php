@@ -7,8 +7,9 @@ require_once 'vendor/autoload.php';
 
 $pdo = ConnectionCreator::createConnection();
 
-$statement = $pdo->query('SELECT * FROM students');
+$statement = $pdo->query('SELECT * FROM phones');
 var_dump($statement->fetchAll());
+exit();
 // var_dump($statement->fetchColumn(1));
 // var_dump($statement->fetch());
 
