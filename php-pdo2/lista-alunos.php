@@ -2,27 +2,16 @@
 
 use Alura\Pdo\Domain\Model\Student;
 use Alura\Pdo\Infrastructure\Persistence\ConnectionCreator;
+use Alura\Pdo\Infrastructure\Repository\PdoStudentRepository;
 
 require_once 'vendor/autoload.php';
 
 $pdo = ConnectionCreator::createConnection();
 
 $statement = $pdo->query('SELECT * FROM phones');
-var_dump($statement->fetchAll());
-exit();
-// var_dump($statement->fetchColumn(1));
-// var_dump($statement->fetch());
+$repository = new PdoStudentRepository($pdo);
+$studentList = $repository->allStudents();
 
-$studentDataList = $statement->fetchAll(PDO::FETCH_ASSOC);
-$studentList = [];
-
-foreach($studentDataList as $student) {
-  $studentList[] = 
-    new Student(
-      $student['id'], 
-      $student['name'], 
-      new DateTimeImmutable($student['birth_date'])
-  );
-}
 
 var_dump($studentList);
+
