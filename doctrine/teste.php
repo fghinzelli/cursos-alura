@@ -1,11 +1,13 @@
 <?php
 
-require_once 'StudentRepository.php';
+use Alura\Doctrine\Helper\EntityManagerFactory;
 
-$databasePath = __DIR__ . '/banco.sqlite';
-$pdo = new \PDO('sqlite:' . $databasePath);
+require_once __DIR__ . '/vendor/autoload.php';
+
+$entityManagerFactory = new EntityManagerFactory;
+$entityManager = $entityManagerFactory->getEntityManager();
+
+var_dump($entityManager->getConfiguration());
 
 
-$student = new StudentRepository($pdo);
-var_dump($student->allStudents());
 
