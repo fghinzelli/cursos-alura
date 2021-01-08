@@ -11,6 +11,7 @@ class EntityManagerFactory
   public function getEntityManager(): EntityManagerInterface
   {
     $rootDir = __DIR__ . '/../..';
+    echo($rootDir);
     $config = Setup::createAnnotationMetadataConfiguration(
       [$rootDir . '/src'], true);
     $connection = [
