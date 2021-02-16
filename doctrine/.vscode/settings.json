@@ -1,0 +1,12 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "doctrine",
+      "group": "Cursos Alura",
+      "database": "${workspaceFolder:doctrine}/var/data/banco.sqlite"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
