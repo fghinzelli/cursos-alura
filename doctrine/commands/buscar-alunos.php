@@ -9,10 +9,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $entityManageFactory = new EntityManagerFactory();
 $entityManager = $entityManageFactory->getEntityManager();
 
-$alunoRepository = $entityManager->getRepository(Aluno::class);
+// $alunoRepository = $entityManager->getRepository(Aluno::class);
+$dql = "SELECT aluno FROM Alura\\Doctrine\\Entity\\Aluno aluno WHERE aluno.id = 1 OR aluno.nome = 'Bernardo Carissimi Ghinzelli' ORDER BY aluno.nome";
+$query = $entityManager->createQuery($dql);
+
+$alunoList = $query->getResult();
 
 /** @var Aluno[] @alunoList */
-$alunoList = $alunoRepository->findAll();
+// $alunoList = $alunoRepository->findAll();
 
 // $alunoList = $alunoRepository->findBy([], ['nome' => 'DESC'], 2);
 
