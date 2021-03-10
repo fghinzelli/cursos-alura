@@ -14,9 +14,17 @@ class EntityManagerFactory
     echo($rootDir);
     $config = Setup::createAnnotationMetadataConfiguration(
       [$rootDir . '/src'], true);
+    // $connection = [
+    //   'driver' => 'pdo_sqlite',
+    //   'path' => $rootDir . '/var/data/banco.sqlite'
+    // ];
     $connection = [
-      'driver' => 'pdo_sqlite',
-      'path' => $rootDir . '/var/data/banco.sqlite'
+      'driver' => 'pdo_mysql',
+      'host' => '192.168.0.7',
+      'dbname' => 'teste',
+      'user' => 'root',
+      'password' => 'gerade',
+      'port' => '3307'
     ];
     return EntityManager::create($connection, $config);
   }
