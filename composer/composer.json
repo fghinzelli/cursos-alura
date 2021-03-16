@@ -1,0 +1,12 @@
+{
+    "name": "fghinzelli/buscador-cursos-alura",
+    "description": "\"Buscador de Cursos da plataforma Alura\"",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Fernando Ghinzelli",
+            "email": "fghinzelli@gmail.com"
+        }
+    ],
+    "require": {}
+}
