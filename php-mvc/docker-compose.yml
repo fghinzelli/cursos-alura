@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    php:
+      image: fghinzelli/php:7.4.7-apache
+      container_name: php-mvc
+      volumes:
+        - ".:/var/www/html"
+      working_dir: "/var/www/html"
+      ports:
+        - 8088:80
+        - 8888:8888
+
