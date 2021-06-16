@@ -1,0 +1,11 @@
+<?php $titulo = 'Novo curso'; require __DIR__ . '/../header.php'?>
+
+    <form>
+      <div class="form-group">
+        <input type="text" id="descricao" name="descricao" class="form-control" />
+      </div>
+      <button class="btn btn-primary">
+        Salvar
+      </button>
+    </form>
+<?php require __DIR__ . '/../footer.php' ?>
