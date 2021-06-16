@@ -4,17 +4,16 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use Alura\Cursos\Controller\ListarCursos;
 use Alura\Cursos\Controller\FormularioInsercao;
+use Alura\Cursos\Controller\Persistencia;
 
-switch ($_SERVER['REQUEST_URI']) {  
-    case '/listar-cursos':
-      $controlador = new ListarCursos();
-      $controlador->processaRequisicao();
-      break;
-    case '/novo-curso':
-      $controlador = new FormularioInsercao();
-      $controlador->processaRequisicao();
-      break;
-    default:
-      echo "Erro 404";
-      break;
-  }
+$path = $_SERVER['REQUEST_URI'];
+$rotas = require __DIR__ . '/../config/routes.php';
+
+if (!array_key_exists($path, $rotas)) {
+    http_response_code(404);
+    exit();
+}
+
+$classeControladora = $rotas[$path];
+$controlador = new $classeControladora();
+$controlador->processaRequisicao();
