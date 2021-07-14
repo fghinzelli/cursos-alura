@@ -6,6 +6,6 @@ class FormularioInsercao implements InterfaceControladorRequisicao
 {
   public function processaRequisicao() : void
   {
-    require __DIR__ . '/../view/cursos/formularios.php';
+    require __DIR__ . '/../view/cursos/formulario.php';
   }
 }

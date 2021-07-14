@@ -1,8 +1,16 @@
 # PHP - MVC
 
-## Para criar uma nova imagem a partir do Dockerfile:
-```docker build -t fghinzelli/php . ```
+## Comandos para executar o servidor dentro do container docker
+```
+docker-compose up -d 
+docker exec -it php-mvc bash
 
-## Para executar um novo container docker usando a imagem
-```docker run -it fghinzelli/php bash```
+# Para installar as dependencias
+composer install
+
+php -S 0.0.0.0:8888 -t public
+
+```
+
+
 

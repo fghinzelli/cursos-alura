@@ -2,7 +2,7 @@ version: '3'
 
 services:
     php:
-      image: fghinzelli/php:7.4.7-apache
+      image: fghinzelli/php:7.2-apache
       container_name: php-mvc
       volumes:
         - ".:/var/www/html"
