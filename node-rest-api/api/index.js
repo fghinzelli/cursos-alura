@@ -11,3 +11,4 @@ app.use('/api/fornecedores', roteador);
 app.listen(config.get('api.porta'), () => {
     console.log('Listen on port ' + config.get('api.porta'));
 })
+
