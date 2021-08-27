@@ -68,6 +68,26 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "DELETE FORNECEDORES",
+			"request": {
+				"url": "http://localhost:3000/api/fornecedores/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"empresa\": \"PET Life\",\n    \"email\": \"petlife@petlife.com.br\",\n    \"categoria\": \"brinquedos\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
