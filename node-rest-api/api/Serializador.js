@@ -10,6 +10,11 @@ class Serializador {
 
     return new ValorNaoSuportado(this.contentType)
   }
+}
 
-
+module.exports = {
+  Serializador: Serializador,
+  formatosAceitos: [
+    'application/json'
+  ]
 }
