@@ -9,6 +9,7 @@ const DadosNaoFornecidos = require('./erros/DadosNaoFornecidos');
 const ValorNaoSuportado = require('./erros/ValorNaoSuportado');
 const formatosAceitos = require('./Serializador').formatosAceitos;
 
+
 app.use(bodyParser.json());
 
 app.use((req, res, proximo) => {
