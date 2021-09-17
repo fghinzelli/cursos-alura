@@ -1,12 +1,18 @@
-const conexao = require('../infrarestrutura/conexao');
+const conexao = require('../infraestrutura/conexao');
 
 class Atendimentos {
   
-  adiciona(dados) {
-    const sql = `
-      INSERT INTO Atendimentos VALUES ?
-    `
+  adiciona(atendimento) {
+    const sql = 'INSERT INTO Atendimentos SET ?'
     
-
+    conexao.query(sql, atendimento, (erro, resultados) => {
+      if (erro) {
+        console.log(erro)
+      } else {
+        console.log(resultados)
+      }
+    })
   }
 }
+
+module.exports = new Atendimentos()

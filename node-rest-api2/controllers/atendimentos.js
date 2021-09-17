@@ -1,3 +1,5 @@
+const Atendimento = require('../models/atendimentos')
+
 module.exports = app => {
   
   app.get('/atendimentos', (req, res) => {
@@ -5,7 +7,9 @@ module.exports = app => {
   })
 
   app.post('/atendimentos', (req, res) => {
-    console.log(req.body);
+    console.log(req.body)
+    Atendimento.adiciona(req.body)
     res.end('POST Recebido')
   })
+
 }
