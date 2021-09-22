@@ -35,3 +35,81 @@ paths:
                       type: integer
                     descricao:
                       type: string
+    post:
+      summary: Insere uma nova especialidade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descricao:
+                  type: string
+      responses:
+        201:
+          description: "Sucesso"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  descricao:
+                    type: string
+  /especialidades/{id}:
+    parameters: 
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      summary: Recupera uma especialidade pelo ID
+      responses:
+        200:
+          description: Successo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  descricao:
+                    type: string
+        404:
+          description: Especialidade não encontrada
+          content:
+            application/json:
+              example: "Not found"
+    put:
+      summary: Atualiza uma especialidade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descricao:
+                  type: string
+      responses:
+        200:
+          description: "Sucesso"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  descricao:
+                    type: string
+    delete:
+      summary: Remove uma especialidade
+      responses:
+        204:
+          description: "Sucesso"
+
+            
+      
