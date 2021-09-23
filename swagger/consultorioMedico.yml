@@ -27,14 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                    descricao:
-                      type: string
+                $ref: "#/components/schemas/Especialidades"
     post:
       summary: Insere uma nova especialidade
       requestBody:
@@ -72,12 +65,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  descricao:
-                    type: string
+                $ref: "#/components/schemas/Especialidade"
         404:
           description: Especialidade não encontrada
           content:
@@ -99,17 +87,22 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  descricao:
-                    type: string
+                $ref: "#/components/schemas/Especialidade"
     delete:
       summary: Remove uma especialidade
       responses:
         204:
           description: "Sucesso"
-
-            
-      
+components:
+  schemas:
+    Especialidade:
+      type: object
+      properties:
+        id:
+          type: number
+        descricao:
+          type: string
+    Especialidades:
+      type: array
+      items:
+        $ref: "#/components/schemas/Especialidade"
