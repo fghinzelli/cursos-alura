@@ -28,6 +28,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Especialidades"
+      tags:
+      - especialidades
     post:
       summary: Insere uma nova especialidade
       requestBody:
@@ -50,6 +52,8 @@ paths:
                     type: integer
                   descricao:
                     type: string
+      tags:
+      - especialidades
   /especialidades/{id}:
     parameters: 
       - name: id
@@ -71,6 +75,8 @@ paths:
           content:
             application/json:
               example: "Not found"
+      tags:
+      - especialidades
     put:
       summary: Atualiza uma especialidade
       requestBody:
@@ -88,11 +94,17 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Especialidade"
+      tags:
+      - especialidades
     delete:
       summary: Remove uma especialidade
       responses:
         204:
           description: "Sucesso"
+      tags:
+      - especialidades
+security: 
+- oauth: [] 
 components:
   schemas:
     Especialidade:
@@ -106,3 +118,10 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Especialidade"
+  securitySchemes:
+    oauth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+    
