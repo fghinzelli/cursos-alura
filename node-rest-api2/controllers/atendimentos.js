@@ -7,9 +7,8 @@ module.exports = app => {
   })
 
   app.post('/atendimentos', (req, res) => {
-    console.log(req.body)
-    Atendimento.adiciona(req.body)
-    res.end('POST Recebido')
+    Atendimento.adiciona(req.body, res)
+
   })
 
 }
