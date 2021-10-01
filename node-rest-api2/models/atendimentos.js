@@ -7,7 +7,6 @@ class Atendimentos {
 
     const dataCriacao = moment().format('YYYY-MM-DD HH:MM:SS')
     const data = moment(atendimento.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
-
     const dataEhValida = moment(data).isSameOrAfter(dataCriacao);
     const clienteEhValido = atendimento.cliente.length > 5
 
@@ -36,11 +35,60 @@ class Atendimentos {
         if (erro) {
           res.status(400).json(erro)
         } else {
-          res.status(200).json(resultados)
+          res.status(201).json(atendimento)
         }
       })
     }
 
+  }
+
+  lista(res) {
+    const sql = "SELECT * FROM Atendimentos";
+
+    conexao.query(sql, (erro, resultados) => {
+      if (erro) {
+        res.status(400).json(erro)
+      } else {
+        res.status(200).json(resultados)
+      }
+    })
+  }
+
+  buscaPorId(id, res) {
+    const sql = `SELECT * FROM Atendimentos WHERE id=${id}`
+
+    conexao.query(sql, id, (erro, resultados) => {
+      if (erro) {
+        res.status(400).json(erro)
+      } else {
+        res.status(200).json(resultados[0])
+      }
+    })
+  }
+
+  atualiza (id, dados, res) {
+    dados.data = moment(dados.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
+    const sql = "UPDATE Atendimentos SET ? WHERE id = ?"
+
+    conexao.query(sql, [dados, id], (erros, resultados) => {
+      if (erros) {
+        res.status(400).json(erros)
+      } else {
+        res.status(200).json({...dados, id})
+      }
+    })
+  }
+
+  deleta (id, res) {
+    const sql = `DELETE FROM Atendimentos WHERE id = ${id}`
+
+    conexao.query(sql, (erros, resultados) => {
+      if (erros) {
+        res.status(400).json(erros)
+      } else {
+        res.status(203).json({id})
+      }
+    })
   }
 }
 
