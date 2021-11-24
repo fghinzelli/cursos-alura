@@ -1,12 +1,18 @@
 const fs = require('fs');
+const path = require('path');
 
-// fs.readFile('./assets/pmcs.jpg', (erro, buffer) => {
-//     console.log('Arquivo bufferizado');
-//     fs.writeFile('./assets/pmcs2.jpg', buffer, erro => {
-//         console.log('Arquivo gravado');
-//     })
-// })
-
-fs.createReadStream('./assets/pmcs.jpg')
-    .pipe(fs.createWriteStream('./assets/pmcs-stream.jpg'))
-    .on('finish', () => console.log('Imagem escrita com stream de dados'));
+module.exports = (caminho, nomeDoArquivo, callBackImagemCriada) => {
+    const tiposValidos = ['jpg', 'png', 'jpeg'];
+    const tipo = path.extname(caminho);
+    const tipoEhValido = tiposValidos.indexOf(tipo.substring(1)) !== -1;
+    const novoCaminho = `./assets/imagens/${nomeDoArquivo}${tipo}`;
+    if (!tipoEhValido) {
+        const erro = 'Tipo é inválido';
+        console.log('Erro! Tipo inválido');
+        callBackImagemCriada(erro);
+    } else {
+        fs.createReadStream(caminho)
+            .pipe(fs.createWriteStream(novoCaminho))
+            .on('finish', () => callBackImagemCriada(false, novoCaminho));
+    }
+}
