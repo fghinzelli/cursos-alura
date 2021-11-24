@@ -1,95 +1,101 @@
 const conexao = require('../infraestrutura/conexao');
 const moment = require('moment');
+const axios = require('axios');
 
 class Atendimentos {
-  
-  adiciona(atendimento, res) {
 
-    const dataCriacao = moment().format('YYYY-MM-DD HH:MM:SS')
-    const data = moment(atendimento.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
-    const dataEhValida = moment(data).isSameOrAfter(dataCriacao);
-    const clienteEhValido = atendimento.cliente.length > 5
+    adiciona(atendimento, res) {
 
-    const validacoes = [
-      {
-        nome: 'data',
-        valido: dataEhValida,
-        mensagem: 'Data deve ser maior ou igual a data atual'
-      },
-      {
-        nome: 'cliente',
-        valido: clienteEhValido,
-        mensagem: 'Cliente deve ter pelo menos cinco caracteres'
-      }
-    ]
+        const dataCriacao = moment().format('YYYY-MM-DD HH:MM:SS')
+        const data = moment(atendimento.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
+        const dataEhValida = moment(data).isSameOrAfter(dataCriacao);
+        const clienteEhValido = atendimento.cliente.length > 5
 
-    const erros = validacoes.filter(campo => !campo.valido)
+        const validacoes = [{
+                nome: 'data',
+                valido: dataEhValida,
+                mensagem: 'Data deve ser maior ou igual a data atual'
+            },
+            {
+                nome: 'cliente',
+                valido: clienteEhValido,
+                mensagem: 'Cliente deve ter pelo menos cinco caracteres'
+            }
+        ]
 
-    if (erros.length) {
-      res.status(400).json(erros)
-    } else {
-      const atendimentoDatado = {...atendimento, dataCriacao, data}
-      const sql = 'INSERT INTO Atendimentos SET ?'
-      
-      conexao.query(sql, atendimentoDatado, (erro, resultados) => {
-        if (erro) {
-          res.status(400).json(erro)
+        const erros = validacoes.filter(campo => !campo.valido)
+
+        if (erros.length) {
+            res.status(400).json(erros)
         } else {
-          res.status(201).json(atendimento)
+            const atendimentoDatado = {...atendimento, dataCriacao, data }
+            const sql = 'INSERT INTO Atendimentos SET ?'
+
+            conexao.query(sql, atendimentoDatado, (erro, resultados) => {
+                if (erro) {
+                    res.status(400).json(erro)
+                } else {
+                    res.status(201).json(atendimento)
+                }
+            })
         }
-      })
+
     }
 
-  }
+    lista(res) {
+        const sql = "SELECT * FROM Atendimentos";
 
-  lista(res) {
-    const sql = "SELECT * FROM Atendimentos";
+        conexao.query(sql, (erro, resultados) => {
+            if (erro) {
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json(resultados)
+            }
+        })
+    }
 
-    conexao.query(sql, (erro, resultados) => {
-      if (erro) {
-        res.status(400).json(erro)
-      } else {
-        res.status(200).json(resultados)
-      }
-    })
-  }
+    buscaPorId(id, res) {
+        const sql = `SELECT * FROM Atendimentos WHERE id=${id}`
 
-  buscaPorId(id, res) {
-    const sql = `SELECT * FROM Atendimentos WHERE id=${id}`
+        conexao.query(sql, async(erro, resultados) => {
 
-    conexao.query(sql, id, (erro, resultados) => {
-      if (erro) {
-        res.status(400).json(erro)
-      } else {
-        res.status(200).json(resultados[0])
-      }
-    })
-  }
+            const atendimento = resultados[0]
+            const cpf = atendimento.cliente;
 
-  atualiza (id, dados, res) {
-    dados.data = moment(dados.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
-    const sql = "UPDATE Atendimentos SET ? WHERE id = ?"
+            if (erro) {
+                res.status(400).json(erro)
+            } else {
+                const { data } = await axios.get(`http://localhost:8082/${cpf}`);
+                atendimento.cliente = data;
+                res.status(200).json(atendimento)
+            }
+        })
+    }
 
-    conexao.query(sql, [dados, id], (erros, resultados) => {
-      if (erros) {
-        res.status(400).json(erros)
-      } else {
-        res.status(200).json({...dados, id})
-      }
-    })
-  }
+    atualiza(id, dados, res) {
+        dados.data = moment(dados.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
+        const sql = "UPDATE Atendimentos SET ? WHERE id = ?"
 
-  deleta (id, res) {
-    const sql = `DELETE FROM Atendimentos WHERE id = ${id}`
+        conexao.query(sql, [dados, id], (erros, resultados) => {
+            if (erros) {
+                res.status(400).json(erros)
+            } else {
+                res.status(200).json({...dados, id })
+            }
+        })
+    }
 
-    conexao.query(sql, (erros, resultados) => {
-      if (erros) {
-        res.status(400).json(erros)
-      } else {
-        res.status(203).json({id})
-      }
-    })
-  }
+    deleta(id, res) {
+        const sql = `DELETE FROM Atendimentos WHERE id = ${id}`
+
+        conexao.query(sql, (erros, resultados) => {
+            if (erros) {
+                res.status(400).json(erros)
+            } else {
+                res.status(203).json({ id })
+            }
+        })
+    }
 }
 
 module.exports = new Atendimentos()
