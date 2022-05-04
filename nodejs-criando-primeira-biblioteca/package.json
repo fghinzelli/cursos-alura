@@ -1,0 +1,11 @@
+{
+  "name": "FirstLibrary",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "author": "Fernando Ghinzelli",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
