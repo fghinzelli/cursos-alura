@@ -1,4 +1,5 @@
 import Link from '../src/components/Link'
+import Footer from '../src/components/patterns/Footer'
 
 
 export default function FaqPage() {
@@ -8,7 +9,7 @@ export default function FaqPage() {
             <Link href="/">
                 Ir para Home
             </Link>
-            
+            <Footer />
         </div>
     )
 }
