@@ -1,15 +1,30 @@
 import chalk from 'chalk';
 import fs from 'fs';
 
-console.log(chalk.blue.bgWhite.bold('Alura'));
+function trataErro(erro) {
+    throw new Error(chalk.red(erro.code, 'não há arquivo no caminho'));
+}
 
-console.log(chalk.blue.bgBlue('Curso', 'de', 'NodeJS'));
+async function pegaArquivo(caminhoDoArquivo) {
+    try {
+        const encoding = 'utf-8';
+        const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
+        console.log(chalk.green(texto))
+    } catch (erro) {
+        console.log(trataErro(erro))
+    } finally {
+        console.log(chalk.yellow('Operaçao finalizada'))
+    }
 
-console.log(chalk.red('vermelho'), chalk.underline.bgBlue('azul'))
-const paragrafo = 'Lorem ipsum';
+}
 
-console.log(`
-    CPU: ${chalk.red('90%')}
-    RAM: ${chalk.green('40%')}
-    DISK: ${chalk.yellow('70%')}
-`);
+// function pegaArquivo(caminhoDoArquivo) {
+    // const encoding = 'utf-8';
+    // fs.promises.readFile(caminhoDoArquivo, encoding)
+    // .then(texto => console.log(chalk.green(texto)))
+    // .catch(erro => trataErro(erro))
+// }
+
+
+
+pegaArquivo(`./arquivos/texto1.md`);
