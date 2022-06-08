@@ -8,7 +8,7 @@ function extraiLinks(texto) {
     while((temp = regex.exec(texto)) !== null) {
         arrayResultados.push({ [temp[1]]: temp[2] })
     }
-    return arrayResultados;
+    return arrayResultados.length === 0 ? 'Não há links' : arrayResultados;
 
 }
 
@@ -20,7 +20,7 @@ async function pegaArquivo(caminhoDoArquivo) {
     try {
         const encoding = 'utf-8';
         const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
-        console.log(extraiLinks(texto))
+        return extraiLinks(texto)
     } catch (erro) {
         console.log(trataErro(erro))
     } finally {
@@ -29,11 +29,4 @@ async function pegaArquivo(caminhoDoArquivo) {
 
 }
 
-// function pegaArquivo(caminhoDoArquivo) {
-//     const encoding = 'utf-8';
-//     fs.promises.readFile(caminhoDoArquivo, encoding)
-//     .then(texto => console.log(chalk.green(texto)))
-//     .catch(erro => trataErro(erro))
-// }
-
-pegaArquivo(`./arquivos/texto1.md`);
+export default pegaArquivo;
