@@ -81,3 +81,23 @@ db.alunos.update(
         }
     }    
 )
+
+# Filtrar itens maiores que
+db.alunos.find({
+    notas: { $gt: 6 }
+})
+
+# Filtrar itens menores que
+db.alunos.find({
+    notas: { $lt: 6 }
+})
+
+# Ordenação
+db.alunos.find().sort({"nome": 1})
+
+db.alunos.find().sort({"nome": -1})
+
+# Limitar quantidade de registros
+db.alunos.findOne()
+
+db.alunos.find().limit(3)
