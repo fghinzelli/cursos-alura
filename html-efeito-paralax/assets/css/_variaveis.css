@@ -1,10 +1,10 @@
 :root {
-    --branco: #FFFFFF;
+    --branco: #FFF;
     --rosa: #F5989D;
-    --rosa-claro:#FFC4B2;
+    --rosa-claro: #FFC4B2;
     --laranja: #F69679;
     --cinza: #808080;
 
-    --branco-transparente: #ffffffaa;
-    --rosa-claro-transparente: #ffc4b2aa;
+    --branco-transparente: #FFFFFFAA;
+    --rosa-claro-transparente: #FFC4B2AA;
 }

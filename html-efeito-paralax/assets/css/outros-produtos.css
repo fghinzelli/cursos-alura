@@ -2,7 +2,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
     padding-top: 2.5rem;
+
     background-color: var(--laranja);
 }
 

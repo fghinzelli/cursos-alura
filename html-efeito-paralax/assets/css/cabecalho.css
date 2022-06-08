@@ -1,5 +1,5 @@
 .cabecalho {
-    background-color: --var(--branco);
+    background-color: var(--branco);
 
     width: 100%;
     height: 4.25rem;
@@ -23,6 +23,7 @@
 
 .cabecalho__logo {
     width: 3.25rem;
+
     margin-right: .75rem;
 }
 
@@ -38,16 +39,20 @@
 
 .cabecalho__item {
     position: relative;
+
     margin-left: 3.75rem;
 }
 
 .cabecalho__item--ativo::before {
-    content: '';
+    content: "";
+
     width: 100%;
     height: .25rem;
 
     background-color: var(--laranja);
+
     position: absolute;
     bottom: -.5rem;
+
     border-radius: .625rem;
-} 
+}
