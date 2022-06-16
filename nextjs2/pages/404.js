@@ -1,3 +1,3 @@
-export default function Custom404() {
-  return <h1>404 - Nosso arquivo do curso</h1>
+export default function NotFound() {
+  return <div>Página não encontrada</div>
 }
