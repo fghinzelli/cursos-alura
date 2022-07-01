@@ -1,0 +1,2 @@
+import pegaArquivo from '../index';
+
