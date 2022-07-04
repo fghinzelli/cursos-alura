@@ -17,3 +17,4 @@ php-oo2/ByteBank/.settings
 php-mvc/vendor
 php-mvc/composer.lock
 mongodb/mongodb
+*node_modules*
