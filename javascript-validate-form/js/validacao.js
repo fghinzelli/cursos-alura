@@ -18,13 +18,16 @@ const mensagensDeErro = {
     dataNascimento: {
         valueMissing: 'O campo de data de nascimento não pode estar vazio',
         customError: 'Você deve ser maior de 18 anos para se cadastrar'
+    },
+    cpf: {
+        valueMissing: 'O campo de CPF não pode estar vazio',
+        customError: 'O valor informado não é válido'
     }
 }
 
 const validadores = {
-    dataNascimento: input => {
-        return validaDataNascimento(input)
-    }
+    dataNascimento: input => validaDataNascimento(input),
+    cpf: input => validaCPF(input)
 }
 
 export function valida(input) {
@@ -69,3 +72,47 @@ function maiorQue18(data) {
 
     return dataMais18 <= dataAtual;
 ;}
+
+function validaCPF(input) {
+    const cpfFormatado = input.value.replace(/\D/g, '');
+    console.log(cpfFormatado)
+    let mensagem = '';
+
+    if (checaCPFNumerosRepetidos(cpfFormatado) || !checaEstruturaCPF(cpfFormatado)) {
+        mensagem = 'O CPF digitado não é válido.'
+    }
+
+    input.setCustomValidity(mensagem);
+}
+
+export function checaCPFNumerosRepetidos(valor) {
+    let qtdRepeticoes = 0;
+    for (let i = 0; i < valor.length; i++) {
+        if (valor[i] === valor[0]) {
+            qtdRepeticoes++;
+        } 
+    }
+
+    return qtdRepeticoes === valor.length;
+}
+
+function checaEstruturaCPF (cpf) {
+    return validaDigitoVerificador(cpf, 10) && validaDigitoVerificador(cpf, 11)
+}
+
+function validaDigitoVerificador(cpf, posicao) {
+    let cpfSemDigitos = cpf.substr(0, posicao - 1).split('')
+    let indice = posicao;
+    let soma = 0;
+    let resultado = 0;
+    for(let i = 0; i < cpfSemDigitos.length; i++) {
+        soma = soma + (indice * parseInt(cpfSemDigitos[i]));
+        indice--;
+    }
+    let resto = soma % 11;
+    if (resto > 1) {
+        resultado = 11 - resto;
+    } 
+    let final = resultado == parseInt(cpf[posicao - 1])
+    return final;
+}
