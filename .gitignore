@@ -16,3 +16,5 @@ php-oo2/ByteBank/.settings
 .metadata/
 php-mvc/vendor
 php-mvc/composer.lock
+mongodb/mongodb
+*node_modules*
