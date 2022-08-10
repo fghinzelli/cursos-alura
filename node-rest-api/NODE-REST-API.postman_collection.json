@@ -1,0 +1,93 @@
+{
+	"variables": [],
+	"info": {
+		"name": "NODE-REST-API",
+		"_postman_id": "2a305d5f-ca2b-3fa0-d30a-f0572679f4e5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET FORNECEDORES",
+			"request": {
+				"url": "http://localhost:3000/api/fornecedores",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST FORNECEDORES",
+			"request": {
+				"url": "http://localhost:3000/api/fornecedores/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"empresa\": \"Alura Ração para gatos 2\",\n        \"email\": \"teste@alura.com.br\",\n        \"categoria\": \"ração\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT FORNECEDORES",
+			"request": {
+				"url": "http://localhost:3000/api/fornecedores/3",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"empresa\": \"PET Life\",\n    \"email\": \"petlife@petlife.com.br\",\n    \"categoria\": \"brinquedos\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET id FORNECEDORES",
+			"request": {
+				"url": "http://localhost:3000/api/fornecedores/3",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE FORNECEDORES",
+			"request": {
+				"url": "http://localhost:3000/api/fornecedores/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"empresa\": \"PET Life\",\n    \"email\": \"petlife@petlife.com.br\",\n    \"categoria\": \"brinquedos\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

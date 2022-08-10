@@ -1,0 +1,28 @@
+{
+  "name": "markdown-hiperlink-extractor",
+  "version": "1.0.0",
+  "Description": "A simple library to extract hiperlinks from Markdown files",
+  "keywords": ["markdown", "URL", "hyperlink"],
+  "homepage": "https://github.com/fghinzelli/markdown-hiperlink-extractor.git",
+  "bugs": "https://github.com/fghinzelli/markdown-hiperlink-extractor/issues",
+
+  "type": "module",
+  "main": "cli.js",
+  "bin": {
+    "markdown-hiperlink-extractor": "./cli.js"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "cli": "node cli.js ./arquivos/texto1.md",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
+  },
+  "author": "Fernando Ghinzelli <fghinzelli@gmail.com> (https://github.com/fghinzelli)",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
