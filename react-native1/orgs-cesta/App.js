@@ -4,7 +4,6 @@ import mock from './src/mocks/cesta';
 
 import AppLoading from 'expo-app-loading';
 
-
 import {
   useFonts,
   Montserrat_400Regular,
