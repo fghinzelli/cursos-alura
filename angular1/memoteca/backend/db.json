@@ -8,7 +8,7 @@
     },
     {
       "id": 2,
-      "conteudo": "Estudando Angular",
+      "conteudo": "Estudando Angular aaaaaa",
       "autoria": "Dev Alura",
       "modelo": "modelo2"
     },
@@ -21,12 +21,6 @@
     {
       "id": 4,
       "conteudo": "tesste",
-      "autoria": "teste",
-      "modelo": "modelo1"
-    },
-    {
-      "id": 5,
-      "conteudo": "teste2",
       "autoria": "teste",
       "modelo": "modelo1"
     }
