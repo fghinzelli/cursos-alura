@@ -9,5 +9,7 @@ public class Principal {
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
+        lost.setMinutosPorEpisodio(50);
+        System.out.println("Duração da serie: " + lost.getDuracaoEmMinutos());
     }
 }
