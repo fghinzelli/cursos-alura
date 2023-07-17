@@ -28,6 +28,9 @@ public class Titulo {
         this.incluidoNoPlano = incluidoNoPlano;
     }
 
+    public void setDuracaoEmMinutos(int duracaoEmMinutos) {
+        this.duracaoEmMinutos = duracaoEmMinutos;
+    }
     public int getDuracaoEmMinutos() {
         return duracaoEmMinutos;
     }
