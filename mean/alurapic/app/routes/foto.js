@@ -1,5 +1,11 @@
 module.exports = function(app) {
   var api = app.api.fotos;
-  app.get('/v1/fotos', api.lista)
-  app.get('/v1/fotos/:id', api.buscarPorId)
+  app.route('/v1/fotos')
+    .get(api.lista)
+    .post(api.adiciona)
+
+  app.route('/v1/fotos/:id')
+    .get(api.buscarPorId)
+    .delete(api.removerPorId)
+    .put(api.atualiza)
 }
