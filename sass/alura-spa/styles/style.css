@@ -41,4 +41,16 @@ nav ul li a:hover {
 .banner .inner-banner h2 {
   font-size: 1.5rem;
   color: #176B87;
+}
+
+#servicos {
+  margin: 80px;
+}
+#servicos h4 {
+  font-size: 3rem;
+  color: #176B87;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin: 1rem;
 }/*# sourceMappingURL=style.css.map */
