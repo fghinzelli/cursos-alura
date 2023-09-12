@@ -1,0 +1,34 @@
+@import '../abstract/variaveis';
+
+#produtos {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .produtos_imagem {
+    
+  }
+  .produtos_texto {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 50%;
+    h3 {
+      font-size: $tamanho-do-texto / 2;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      color: $cor-primaria;
+    }
+    h4 {
+      font-size: $tamanho-do-texto / 2.5;
+      margin-bottom: 1rem;
+      color: $cor-secundaria;
+    }
+    p {
+      font-size: $tamanho-do-texto / 3;
+      line-height: 1.5rem;
+    }
+  }
+}
